@@ -1,0 +1,8 @@
+{
+  "appService.zipIgnorePattern": [
+    "node_modules{,/**}",
+    ".vscode{,/**}"
+  ],
+  "appService.defaultWebAppToDeploy": "/subscriptions/ea9ff72c-0612-4ac9-855f-f7a7809e9354/AppServices/subscriptions/ea9ff72c-0612-4ac9-855f-f7a7809e9354/resourceGroups/christian-heimke-rg/providers/Microsoft.Web/sites/techstarter-todo-api",
+  "appService.deploySubpath": "."
+}
