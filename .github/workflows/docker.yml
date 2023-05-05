@@ -26,3 +26,21 @@ jobs:
         with:
           push: true
           tags: containerregistry1982.azurecr.io/ttd-backend:${{ github.run_number }}
+
+
+
+  deploy:
+    name: deploy new image
+    needs: [build-and-release]
+    runs-on: ubuntu-latest
+    steps:
+     - name: executing remote SSH commands using password
+       uses: appleboy/ssh-action@master
+       with:
+        host: 52.157.192.99
+        username: deploy
+        key: ${{ secrets.SSH_PRIVATE_KEY }}
+        script: |
+            docker ps -q --filter ancestor="ttd_backend" | xargs -r docker stop
+            docker rm -f ttd_backend || true
+            docker run -d --name ttd_backend -p3000:3000 -v /home/deploy/data.csv:/app/data.csv containerregistry1982.azurecr.io/ttd-backend:${{ github.run_number }}
