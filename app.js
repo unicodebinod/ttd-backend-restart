@@ -6,7 +6,7 @@ const cors = require('cors')                        // CORS deaktivieren
 const csv = require('csv-parser');                  // handler für CSV Dateien
 const fs = require('fs');                           // handler zum lesen/schreiben von Dateien
 const ObjectsToCsv = require('objects-to-csv')      // Wandlet CSV Zeilen in JSON-Objekte um
-const promMid = require('express-prometheus-middleware');
+
 /***************************************************************************************************
     Konfigurationen
 *****************************************************************************************************/
@@ -25,13 +25,7 @@ const app = express()                               // express app erstellen
 app.use(bodyParser.json());                         // den body-parser übergeben
 app.use(morgan('combined'))                         // den http-logger übergeben
 app.use(cors(corsOptions))                          // CORS-Einstellungen übergeben
-app.use(promMid({
-    metricsPath: '/metrics',
-    collectDefaultMetrics: true,
-    requestDurationBuckets: [0.1, 0.5, 1, 1.5],
-    requestLengthBuckets: [512, 1024, 5120, 10240, 51200, 102400],
-    responseLengthBuckets: [512, 1024, 5120, 10240, 51200, 102400],
-    }))
+
 /***************************************************************************************************
     todo liste
 ****************************************************************************************************/
