@@ -1,4 +1,4 @@
-# TechstarterToDo-API Skeleton
+# TechstarterToDo-API 
 
 Es gibt zwei Varianten die API zu entwicklen, docker oder nodejs basierend.
 
